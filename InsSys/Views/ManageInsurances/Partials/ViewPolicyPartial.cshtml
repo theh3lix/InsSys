@@ -1,0 +1,112 @@
+﻿@model  InsuranceSystem.Models.Insurance
+@{ 
+    var db = new InsuranceSystemContext();
+    string optionString = db.InsurancePackages.Where(x => x.PackageNo == Model.InsurancePackageNo).First().PackageName;
+    db.Dispose();
+}
+<style>
+    .background-div {
+        position: fixed; /* Stay in place */
+        z-index: 1111; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0); /* Black w/ opacity */
+        cursor: pointer;
+    }
+
+    #modal {
+        position: absolute;
+        min-width: 370px !important;
+        max-width: 65%;
+        font-family: 'Trebuchet MS';
+        padding: 10px;
+        padding-bottom: 30px;
+        -webkit-animation: fadein .2s; /* Safari, Chrome and Opera > 12.1 */
+        -moz-animation: fadein .2s; /* Firefox < 16 */
+        -ms-animation: fadein .2s; /* Internet Explorer */
+        -o-animation: fadein .2s; /* Opera < 12.1 */
+        animation: fadein .2s;
+    }
+
+        #modal:hover {
+            cursor: default;
+        }
+
+    #close {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+    }
+
+    #save {
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+    }
+
+        #save:hover {
+            color: #3c8dbc;
+            cursor: pointer;
+        }
+
+    @@keyframes fadein {
+        from {
+            opacity: 0
+        }
+
+        to {
+            opacity: 1
+        }
+    }
+    #addInstalment:hover {
+        color: #3c8dbc;
+        cursor: pointer;
+    }
+</style>
+        <div class="background-div">
+            <div id="modal" class="modal-content box box-primary" style="width: 300px">
+                <span class="close" id="close"><i class="fa fa-times-circle fa-lg"></i></span>
+                <dl class="dl-horizontal">
+                    <dt>&nbsp;</dt>
+                    <dd>&nbsp;</dd>
+                    <dt>Policy Number</dt>
+                    <dd><label>@Model.InsuranceNr</label></dd>
+                    <dt>Insurance Option</dt>
+                    <dd><label>@optionString</label></dd>
+                    <dt>Insurance Start Date</dt>
+                    <dd><label>@Model.InsuranceStartDate.ToString("yyyy-MM-dd")</label></dd>
+                    <dt>Insurance End Date</dt>
+                    <dd><label>@Model.InsuranceEndDate.ToString("yyyy-MM-dd")</label></dd>
+                    <dt>&nbsp;</dt>
+                    <dd>&nbsp;</dd>
+                    <dt>Full Name </dt>
+                    <dd><label>@Model.PersonalData.LastName @Model.PersonalData.FirstName</label></dd>
+                    <dt>PESEL</dt>
+                    <dd><label>@Model.PersonalData.PESEL</label></dd>
+                    <dt>&nbsp;</dt>
+                    <dd>&nbsp;</dd>
+                    <dt>Street</dt>
+                    <dd><label>@Model.PersonalData.Street @Model.PersonalData.HouseNo @(Model.PersonalData.LastName != "" ? $"/{Model.PersonalData.LocalNo}" : "")</label></dd>
+                    <dt>City</dt>
+                    <dd><label>@Model.PersonalData.City</label></dd>
+                    <dt>Postal Code</dt>
+                    <dd><label>@Model.PersonalData.PostalCode</label></dd>
+
+                </dl>
+            </div>
+        </div>
+
+
+<script>
+    var span = document.getElementById("close");
+    span.onclick = function () {
+        document.getElementById("policymodal").innerHTML = "";
+    };
+
+</script>
+

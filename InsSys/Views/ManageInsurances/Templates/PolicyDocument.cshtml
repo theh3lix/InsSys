@@ -1,0 +1,180 @@
+﻿@model InsuranceSystem.Models.Insurance
+@{
+    Layout = null;
+    var db = new InsuranceSystemContext();
+    string opcja = db.InsurancePackages.Where(x => x.PackageNo == Model.InsurancePackageNo).First().PackageName.Contains("podst") ? "PODSTAWOWA" : "ROZSZERZONA";
+    double contrSum = db.InsurancePackages.Where(x => x.PackageNo == Model.InsurancePackageNo).First().ContributionSum;
+    db.Dispose();
+}
+
+<html>
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=windows-1250">
+    <meta name=Generator content="Microsoft Word 15 (filtered)">
+</head>
+<body>
+    <DIV STYLE="text-align:Left;font-family:Segoe UI;font-style:normal;font-weight:normal;font-size:12px;color:#000000;">
+        <P STYLE="text-align:Center;font-family:Trebuchet MS;font-size:26px;margin:0 0 1px 0;">
+            <SPAN>
+                <SPAN>Polisa ubezpieczeniowa</SPAN>
+            </SPAN>
+        </P>
+        <P STYLE="text-align:Center;font-family:Trebuchet MS;font-size:16px;margin:0 0 1px 0;">
+            <SPAN>
+                <SPAN>Zawarta w dniu @($"{DateTime.Now:dd-MM-yyyy}")</SPAN>
+            </SPAN>
+        </P>
+        <P />
+        <OL STYLE="margin:0 0 0 0;padding:0 0 0 0;">
+            <LI STYLE="margin:0 0 0 48px;">
+                <P STYLE="font-family:Trebuchet MS;font-size:16px;margin:0 0 1px 0;">
+                    <SPAN>
+                        <SPAN>1. UBEZPIECZYCIEL</SPAN>
+                        <SPAN>@Model.IC.ICName</SPAN>
+                    </SPAN>
+                </P>
+            </LI>
+        </OL>
+        <P STYLE="font-family:Times New Roman;font-size:16px;margin:0 0 1px 0;">
+            
+        </P>
+        <P />
+        <P STYLE="font-family:Trebuchet MS;font-size:16px;margin:0 0 1px 0;">
+            <SPAN STYLE="font-family:Times New Roman;">
+                <SPAN>    </SPAN>
+            </SPAN>
+            <SPAN>
+                <SPAN>  2. UBEZPIECZANY</SPAN>
+            </SPAN>
+        </P>
+        <P STYLE="font-family:Trebuchet MS;font-size:16px;margin:0 0 1px 0;">
+            <SPAN>
+                <SPAN><label>Imię Nazwisko: </label></SPAN><span>@Model.PersonalData.FirstName @Model.PersonalData.LastName</span>
+            </SPAN>
+        </P>
+        <P STYLE="font-family:Trebuchet MS;font-size:16px;margin:0 0 1px 0;">
+            <SPAN>
+                <SPAN><label>Data urodzenia: </label></SPAN><span>@($"{Model.PersonalData.DateOfBirth:dd-MM-yyyy}")</span>
+            </SPAN>
+        </P>
+        <P STYLE="font-family:Trebuchet MS;font-size:16px;margin:0 0 1px 0;">
+            <SPAN>
+                <SPAN><label>PESEL: </label></SPAN><span>@Model.PersonalData.PESEL</span>
+            </SPAN>
+        </P>
+        <P />
+        <P STYLE="font-family:Trebuchet MS;font-size:16px;margin:0 0 1px 0;">
+            <SPAN>
+                <SPAN><label>Ulica: </label></SPAN><span>@Model.PersonalData.Street</span>
+            </SPAN>
+        </P>
+        <P STYLE="font-family:Trebuchet MS;font-size:16px;margin:0 0 1px 0;">
+            <SPAN>
+                <SPAN><label>Miejscowość: </label></SPAN><span>@Model.PersonalData.City</span>
+            </SPAN>
+        </P>
+        <P STYLE="font-family:Trebuchet MS;font-size:16px;margin:0 0 1px 0;">
+            <SPAN>
+                <SPAN><label>Kod pocztowy: </label></SPAN><span>@Model.PersonalData.PostalCode</span>
+            </SPAN>
+        </P>
+        <P />
+        <P />
+        <P STYLE="font-family:Trebuchet MS;font-size:16px;margin:0 0 1px 0;">
+            <SPAN>
+                <SPAN>      </SPAN>
+            </SPAN>
+            <SPAN>
+                <SPAN>3. WARIANT UBEZPIECZENIA: </SPAN>
+            </SPAN>
+        </P>
+        <p></p>
+        <P STYLE="font-family:Trebuchet MS;font-size:16px;margin:0 0 1px 0;">
+            <SPAN>
+                <SPAN><label>Opcja: </label></SPAN><span>@opcja</span>
+            </SPAN>
+        </P>
+        <P STYLE="font-family:Trebuchet MS;font-size:16px;margin:0 0 1px 0;">
+            <SPAN>
+                <SPAN><label>Wysokość składki: </label></SPAN><span>@(contrSum)zł</span>
+            </SPAN>
+        </P>
+        <P STYLE="font-family:Trebuchet MS;font-size:16px;margin:0 0 1px 0;">
+            <SPAN>
+                <SPAN><label>Okres trwania ubezpieczenia: </label>@($"{Model.InsuranceStartDate:dd-MM-yyyy}") do @($"{Model.InsuranceEndDate:dd-MM-yyyy}")</SPAN>
+            </SPAN>
+        </P>
+        <P />
+        <P STYLE="font-family:Trebuchet MS;font-size:16px;margin:0 0 1px 0;">
+            <SPAN>
+                <SPAN><label>Ubezpieczenie zawiera:</label></SPAN>
+            </SPAN>
+        </P>
+        <P STYLE="font-family:Trebuchet MS;font-size:16px;text-indent:48px;margin:0 0 1px 0;">
+            <SPAN>
+                <SPAN>BenefitPodstawowy1</SPAN>
+            </SPAN>
+        </P>
+        <P STYLE="font-family:Trebuchet MS;font-size:16px;text-indent:48px;margin:0 0 1px 0;">
+            <SPAN>
+                <SPAN>BenefitPodstawowy2</SPAN>
+            </SPAN>
+        </P>
+        <P STYLE="font-family:Trebuchet MS;font-size:16px;text-indent:48px;margin:0 0 1px 0;">
+            <SPAN>
+                <SPAN>BenefitPodstawowy3</SPAN>
+            </SPAN>
+        </P>
+        <P STYLE="font-family:Trebuchet MS;font-size:16px;text-indent:48px;margin:0 0 1px 0;">
+            <SPAN>
+                <SPAN>BenefitPodstawowy4	</SPAN>
+            </SPAN>
+        </P>
+        @if (opcja == "ROZSZERZONA")
+        {
+            <P STYLE="font-family:Trebuchet MS;font-size:16px;text-indent:48px;margin:0 0 1px 0;">
+                <SPAN>
+                    <SPAN>BenefitRozszerzony1</SPAN>
+                </SPAN>
+            </P>
+            <P STYLE="font-family:Trebuchet MS;font-size:16px;text-indent:48px;margin:0 0 1px 0;">
+                <SPAN>
+                    <SPAN>BenefitRozszerzony2</SPAN>
+                </SPAN>
+            </P>
+        }
+        <P />
+        <P />
+        <P STYLE="font-family:Trebuchet MS;font-size:16px;margin:0 0 1px 0;">
+            <SPAN>
+                <SPAN>      4. ADMINISTRACJA DANYCH OSOBOWYCH</SPAN>
+            </SPAN>
+        </P>
+        <P />
+        <P STYLE="font-family:Trebuchet MS;font-size:16px;margin:0 0 1px 0;">
+            <SPAN>
+                <SPAN>W momencie zawarcia ubezpieczenia ubezpieczany wyraża zgodę na </SPAN>
+            </SPAN>
+            <SPAN>
+                <SPAN>przetwarzanie danych osobowych, administrowanych lub/i powierzonych do przetwarzania (nazwa podmiotu nadającego upoważnienie), w postaci papierowej oraz w ramach nadanych dostępów do systemów informatycznych, zgodnie z zakresem obowiązków wynikającym z piastowanego stanowiska lub postanowień umowy współpracy. Jednocześnie, wraz z nadanym upoważnieniem, zobowiązuję Panią/Pana do aktywnego zapewnienia poufności tych danych oraz do przestrzegania przepisów dotyczących ochrony danych osobowych ze szczególnym uwzględnieniem Rozporządzenia Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych - RODO) i Ustawy z dnia 10 maja 2018 roku o Ochronie Danych Osobowych (Dz.U. z 2018 poz. 1000 ze zm.) oraz wprowadzonych i wdrożonych do stosowania przez (nazwa podmiotu nadającego upoważnienie) procedur postępowania i wewnętrznych polityk udostępnionych do wglądu (uzupełnić zgodnie ze stanem faktycznym). </SPAN>
+            </SPAN>
+        </P>
+        <P />
+        <P />
+        <P />
+        <P STYLE="font-family:Trebuchet MS;font-size:16px;margin:0 0 1px 0;">
+            <SPAN>
+                <SPAN>....................................                         ...........................................</SPAN>
+            </SPAN>
+        </P>
+        <P STYLE="font-family:Trebuchet MS;font-size:13.333333333333332px;margin:0 0 1px 0;">
+            <SPAN STYLE="font-size:16px;">
+                <SPAN>	</SPAN>
+            </SPAN>
+            <SPAN>
+                <SPAN>Podpis ubezpieczyciela					    Podpis ubezpieczonego</SPAN>
+            </SPAN>
+        </P>
+    </DIV>
+</body>
+</html>

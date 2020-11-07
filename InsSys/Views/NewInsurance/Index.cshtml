@@ -1,0 +1,55 @@
+﻿@model InsuranceSystem.Models.NewInsuranceDTO
+@{
+    ViewBag.Title = "New Insurance";
+    List<InsuranceSystem.Models.InsuranceCompany> insurers = InsSys.Services.NewInsuranceServices.GetInsurers();
+    List<SelectListItem> insurersList = new List<SelectListItem>();
+    insurers.ForEach(x => insurersList.Add(new SelectListItem { Text = x.ICName, Value = x.Id.ToString() }));
+    List<SelectListItem> variantsList = new List<SelectListItem> { new SelectListItem { Text = "Podstawowy", Value = "1" }, new SelectListItem { Text = "Rozszerzony", Value = "2" } };
+}
+<style>
+    @@font-face {
+        font-family: "ING Me";
+        src: url("../fonts/INGMeWeb-Regular.woff2.ttf");
+    }
+</style>
+<link href="//db.onlinewebfonts.com/c/69c633b2a4e41e8101c6f4f149655d5e?family=ING+Me" rel="stylesheet" type="text/css" />
+<div class="jumbotron" style="font-family: 'ING Me';">
+    <div class="row">
+        <form action="/NewInsurance/RegisterInsurance" method="post">
+        <div class="col-md-12">
+            <div class="box box-primary" style="height: 450px; width: 60%; margin-left: auto; margin-right: auto; padding-top: 20px;">
+                @Html.LabelFor(model => model.FirstName, new { @class = "col-md-6", @style = "text-align: center" })
+                <span class="col-md-6" style="margin-bottom: 3px">@Html.EditorFor(model => model.FirstName)</span>
+                @Html.LabelFor(model => model.LastName, new { @class = "col-md-6", @style = "text-align: center" })
+                <span class="col-md-6" style="margin-bottom: 3px">@Html.EditorFor(model => model.LastName)</span>
+                @Html.LabelFor(model => model.DateOfBirth, new { @class = "col-md-6", @style = "text-align: center" })
+                <span class="col-md-6" style="margin-bottom: 3px"><input type="date" name="DateOfBirth"/></span>
+                @Html.LabelFor(model => model.PESEL, new { @class = "col-md-6", @style = "text-align: center" })
+                <span class="col-md-6">@Html.EditorFor(model => model.PESEL)</span>
+                <span class="col-md-6">&nbsp;</span>
+                @Html.LabelFor(model => model.Street, new { @class = "col-md-6", @style = "clear: both;text-align: center" })
+                <span class="col-md-6" style="margin-bottom: 3px">@Html.EditorFor(model => model.Street)</span>
+                @Html.LabelFor(model => model.HouseNo, new { @class = "col-md-6", @style = "text-align: center" })
+                <span class="col-md-6" style="margin-bottom: 3px">@Html.EditorFor(model => model.HouseNo)</span>
+                @Html.LabelFor(model => model.LocalNo, new { @class = "col-md-6", @style = "text-align: center" })
+                <span class="col-md-6" style="margin-bottom: 3px">@Html.EditorFor(model => model.LocalNo)</span>
+                @Html.LabelFor(model => model.PostalCode, new { @class = "col-md-6", @style = "text-align: center" })
+                <span class="col-md-6" style="margin-bottom: 3px">@Html.EditorFor(model => model.PostalCode)</span>
+                @Html.LabelFor(model => model.City, new { @class = "col-md-6", @style = "text-align: center" })
+                <span class="col-md-6">@Html.EditorFor(model => model.City)</span>
+                <span class="col-md-6">&nbsp;</span>
+                @Html.LabelFor(model => model.InsuranceStartDate, new { @class = "col-md-6", @style = "clear: both; text-align: center" })
+                <span class="col-md-6" style="margin-bottom: 3px"><input type="date" name="InsuranceStartDate" value="@($"{DateTime.Now:yyyy-MM-dd}")" /></span>
+                @Html.LabelFor(model => model.InsuranceEndDate, new { @class = "col-md-6", @style = "text-align: center" })
+                <span class="col-md-6" style="margin-bottom: 3px"><input type="date" name="InsuranceEndDate" value="@($"{DateTime.Now.AddYears(1):yyyy-MM-dd}")" /></span>
+                @Html.LabelFor(model => model.Insurer, new { @class = "col-md-6", @style = "text-align: center" })
+                <span class="col-md-6" style="margin-bottom: 3px">@Html.DropDownListFor(model => model.Insurer, insurersList)</span>
+                @Html.LabelFor(model => model.Variant, new { @class = "col-md-6", @style = "text-align: center" })
+                <span class="col-md-6">@Html.DropDownListFor(model => model.Variant, variantsList)</span>
+            </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-right: 20px; float: right">Add</button>
+        </form>
+    </div>
+</div>
+

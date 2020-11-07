@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="//db.onlinewebfonts.com/c/69c633b2a4e41e8101c6f4f149655d5e?family=ING+Me" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/vuejs")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <style>
+        .NavLink:hover {
+            background-color: #3c9dac !important;
+            border-radius: 5px !important;
+        }
+        .NavLink:active {
+            background-color: #3c9dac !important;
+            border-radius: 5px !important;
+        }
+    </style>
+        <div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #3c8dbc; color: white !important;">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Insurance System", "Index", "Home", new { area = "" }, new { @class = "navbar-brand", @id = "HomeButton", @style = "font-weight: bold; color: white" })
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>@Html.ActionLink("New Insurance", "Index", new { controller = "NewInsurance" }, new { @style = "font-weight: bold; font-size: 1.7rem; color: white", @class = "NavLink" })</li>
+                        <li>@Html.ActionLink("Manage Existing Insurances", "Index", new { controller = "ManageInsurances" }, new { @style = "font-weight: bold; font-size: 1.7rem; color: white", @class = "NavLink" })</li>
+                        <li>@Html.ActionLink("Administration Tools", "Index", new { controller = "AdminTools" }, new { @style = "font-weight: bold; font-size: 1.7rem; color: white", @class = "NavLink" })</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+        </div>
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/vuejs")
+        <script>
+            $("#HomeButton").html("<i class='fa fa-home fa-lg' aria-hidden='true'></i> Insurance System");
+        </script>
+        @RenderSection("scripts", required: false)
+</body>
+</html>

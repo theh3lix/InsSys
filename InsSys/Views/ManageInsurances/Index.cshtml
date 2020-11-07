@@ -1,0 +1,41 @@
+﻿@{
+    ViewBag.Title = "Zarządzanie ubezpieczeniami";
+}
+
+<div class="jumbotron">
+    <p style="font-size: 3rem; font-family: 'Trebuchet MS'; font-weight: bold; text-align: center">Zarządzanie ubezpieczeniami</p>
+    
+    <div id="Element" class="box box-primary">
+        <div id="policymodal"></div>
+        <div class="row">
+            <span class="col-xs-2" style="text-align: center;font-family: 'Trebuchet MS'; font-weight: bold">PESEL</span>
+            <span class="col-xs-3" style="text-align: center;font-family: 'Trebuchet MS'; font-weight: bold">Insurance Option</span>
+            <span class="col-xs-2" style="text-align: center;font-family: 'Trebuchet MS'; font-weight: bold">Insurance Start Date</span>
+            <span class="col-xs-2" style="text-align: center;font-family: 'Trebuchet MS'; font-weight: bold">Insurance End Date</span>
+            <span class="col-xs-3">&nbsp;</span>
+        </div>
+        <div class="row" style="padding-bottom: 10px" v-for='record in insurancesVisible'>
+            <div class="list-seperator"></div>
+            <span class="col-xs-2" style="text-align: center;font-family: 'Trebuchet MS'">{{record.PESEL}}</span>
+            <span class="col-xs-3" style="text-align: center;font-family: 'Trebuchet MS'">{{record.PackageString}}</span>
+            <span class="col-xs-2" style="text-align: center;font-family: 'Trebuchet MS'">{{record.InsStartDate}}</span>
+            <span class="col-xs-2" style="text-align: center;font-family: 'Trebuchet MS'">{{record.InsEndDate}}</span>
+                <span class="col-xs-3">
+                    <button class="btn btn-primary btn-sm" v-on:click="generatePolicy(record.id)">Generate Policy</button>
+                    <button class="btn btn-primary btn-sm" v-on:click="showPolicy($event, record.id)">Show</button>
+                    <button class="btn btn-primary btn-sm" v-on:click="deletePolicy(record.id); return false;">Delete</button>
+                </span>
+        </div>
+        <div style="text-align: center">
+            <button class="btn btn-sm font-weight-bold" style="display: inline-block; color: black;" v-on:click="previousPage" v-bind:disabled="disabledRetract">
+                <i class="fa fa-angle-double-left"> </i>
+            </button>
+            <button class="btn btn-sm font-weight-bold" style="display: inline-block; margin-left: 10px; color: black;" v-on:click="nextPage" v-bind:disabled="disabledAdd">
+                <i class="fa fa-angle-double-right"> </i>
+            </button>
+        </div>
+        
+    </div>
+</div>
+@Scripts.Render("~/Scripts/vue.min.js")
+@Scripts.Render("~/Scripts/viewScripts/manageInsurancesController.js")

@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+    <div class="row box box-primary" style="border-radius: 5px; width: 90%; margin-top: 20px; margin-left: auto; margin-right: auto; padding-bottom: 50px; padding-top: 30px;">
+        <h3 style="text-align: center; margin-bottom: 20px;">Administration Panel</h3>
+        <div class="col-md-4" style="text-align: center">
+            <p><a class="btn btn-primary" href="/NewInsurance">New Insurance &raquo;</a></p>
+        </div>
+        <div class="col-md-4" style="text-align: center">
+            <p><a class="btn btn-primary" onclick="ClearTheBase()">Clear the base &raquo;</a></p>
+        </div>
+        <div class="col-md-4" style="text-align: center">
+            <p><a class="btn btn-primary" href="https://go.microsoft.com/fwlink/?LinkId=301867">Drop the base &raquo;</a></p>
+        </div>
+    </div>
+
+
+<script>
+    function ClearTheBase() {
+        return confirm("Are you sure?");
+    }
+</script>
