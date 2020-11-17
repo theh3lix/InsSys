@@ -54,7 +54,7 @@ var app = new Vue({
         },
         async generatePolicy(id) {
             let res = await fetch('/ManageInsurances/GeneratePolicyDocument?id=' + id, { method: 'post' });
-            window.location = res.url;
+            console.log(res);
         },
         async deletePolicy(id) {
             let res = await fetch('/ManageInsurances/DeletePolicy?id=' + id, { method: 'post' });

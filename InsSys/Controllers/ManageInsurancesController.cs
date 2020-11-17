@@ -12,9 +12,7 @@ using System.IO;
 using System.Net.Http;
 using System.Web;
 using System.Text.RegularExpressions;
-using TheArtOfDev.HtmlRenderer.PdfSharp;
-using PdfSharp.Pdf;
-using PdfSharp;
+using Rotativa;
 
 namespace InsuranceSystem.Controllers
 {
@@ -101,33 +99,7 @@ namespace InsuranceSystem.Controllers
                 var record = db.Insurances.Where(x=>x.Id==id)
                     .Include(x=>x.IC)
                     .Include(x=>x.PersonalData).First();
-                string html = RenderRazorViewToString("Templates/PolicyDocument", record);
-                html = InlineCss(html);
-                ////    fetch view's pdf styles
-                string CSSContent = "";
-                PdfDocument pdf = PdfGenerator.GeneratePdf(html, PageSize.A4);
-                pdf.Save("document.pdf");
-                return File("document.pdf", "application/pdf", "Test.pdf");
-                //StringReader sr = new StringReader(html.ToString());
-                //Document document = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
-                //HTMLWorker htmlparser = new HTMLWorker(document);
-                //using (MemoryStream memoryStream = new MemoryStream())
-                //{
-                //    PdfWriter writer = PdfWriter.GetInstance(document, memoryStream);
-                //    document.Open();
-
-                //    htmlparser.Parse(sr);
-                //    document.Close();
-
-                //    byte[] bytes = memoryStream.ToArray();
-                //    memoryStream.Close();
-                //    var file = new FileInfo("~/Content/file.pdf");
-                //    System.IO.File.WriteAllBytes(@"\\SPPLFAPCEN02.pl.ing-ad\userdata\EH91SA\Documents\PI\InsSys\Content\file.pdf", bytes);
-                //    return File(bytes, "application/pdf", "Test.pdf");
-                //}
-                //var res = new PdfActionResult("Templates/PolicyDocument.cshtml", record);
-                //res.FileDownloadName = $"{record.PersonalData.PESEL}_Policy.pdf";
-                //return res;
+                return new ViewAsPdf("Templates/PolicyDocument", record);
             }
         }
 

@@ -20,11 +20,14 @@
             <span class="col-xs-3" style="text-align: center;font-family: 'Trebuchet MS'">{{record.PackageString}}</span>
             <span class="col-xs-2" style="text-align: center;font-family: 'Trebuchet MS'">{{record.InsStartDate}}</span>
             <span class="col-xs-2" style="text-align: center;font-family: 'Trebuchet MS'">{{record.InsEndDate}}</span>
+            <form id="form" method="post" action="/ManageInsurances/GeneratePolicyDocument">
+                <input type="hidden" name="id" v-bind:value="record.id" />
                 <span class="col-xs-3">
-                    <button class="btn btn-primary btn-sm" v-on:click="generatePolicy(record.id)">Generate Policy</button>
-                    <button class="btn btn-primary btn-sm" v-on:click="showPolicy($event, record.id)">Show</button>
-                    <button class="btn btn-primary btn-sm" v-on:click="deletePolicy(record.id); return false;">Delete</button>
+                    <button class="btn btn-primary btn-sm" type="submit">Generate Policy</button>
+                    <button class="btn btn-primary btn-sm" type="button" v-on:click="showPolicy($event, record.id)">Show</button>
+                    <button class="btn btn-primary btn-sm" type="button" v-on:click="deletePolicy(record.id); return false;">Delete</button>
                 </span>
+            </form>
         </div>
         <div style="text-align: center">
             <button class="btn btn-sm font-weight-bold" style="display: inline-block; color: black;" v-on:click="previousPage" v-bind:disabled="disabledRetract">
