@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace InsuranceSystem.Models
+namespace InsSys.Models
 {
     public class AuthorizedUser
     {

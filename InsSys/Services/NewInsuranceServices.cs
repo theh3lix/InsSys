@@ -1,4 +1,5 @@
-﻿using InsuranceSystem.Models;
+﻿using InsSys.Services.Interfaces;
+using InsSys.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Web;
 
 namespace InsSys.Services
 {
-    public class NewInsuranceServices
+    public class NewInsuranceServices : INewInsuranceServices
     {
         public NewInsuranceServices()
         {
@@ -59,7 +60,21 @@ namespace InsSys.Services
             return returnInsurance;
         }
 
-        public static List<InsuranceCompany> GetInsurers()
+        public Insurance FillInsurance(Insurance InsuranceRecord)
+        {
+            using (var db = new InsuranceSystemContext())
+            {
+                string lastInsuranceNo = db.Insurances.ToList().OrderByDescending(x => x.Id).First().InsuranceNr;
+                long newInsuranceNo = Convert.ToInt64(lastInsuranceNo) + 1;
+                var id_ic = db.InsurancePackages.Where(x => x.PackageNo == InsuranceRecord.InsurancePackageNo).First().Id_IC;
+                var ic = db.InsuranceCompanies.Find(id_ic);
+                InsuranceRecord.IC = ic;
+                InsuranceRecord.InsuranceNr = newInsuranceNo.ToString();
+                return InsuranceRecord;
+            }
+        }
+
+        public List<InsuranceCompany> GetInsurers()
         {
             using(var db = new InsuranceSystemContext())
             {

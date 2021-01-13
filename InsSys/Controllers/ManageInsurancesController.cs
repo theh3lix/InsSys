@@ -1,50 +1,31 @@
-﻿using InsSys;
-using InsSys.Models;
+﻿using InsSys.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
-using MvcRazorToPdf;
-using RazorPDF;
 using Newtonsoft.Json;
 using System.IO;
-using System.Net.Http;
-using System.Web;
 using System.Text.RegularExpressions;
 using Rotativa;
+using InsSys.Services.Interfaces;
+using InsSys.Services;
 
-namespace InsuranceSystem.Controllers
+namespace InsSys.Controllers
 {
     public class ManageInsurancesController : Controller
     {
+        private IManageInsurancesServices services = new ManageInsurancesServices();
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult Test(int id)
-        {
-            using(var db = new InsuranceSystemContext())
-            {
-                var record = db.Insurances.Where(x => x.Id == id)
-                    .Include(x => x.IC)
-                    .Include(x => x.PersonalData).First();
-                return View("Templates/PolicyDocument", record);
-
-            }
-        }
-
         [HttpGet]
         public ActionResult ShowPolicy(int id)
         {
-            using(var db = new InsuranceSystemContext())
-            {
-                var record = db.Insurances.Where(x => x.Id == id)
-                    .Include(x => x.IC)
-                    .Include(x => x.PersonalData).First();
-                return PartialView("Partials/ViewPolicyPartial", record);
-            }
+            var record = services.GetRecord(id);
+            return PartialView("Partials/ViewPolicyPartial", record);
         }
 
         [HttpGet]
@@ -58,15 +39,8 @@ namespace InsuranceSystem.Controllers
                 {
                     var icid = db.InsurancePackages.Where(x => x.PackageNo == record.InsurancePackageNo).Select(x => x.Id_IC).First();
                     var ICName = db.InsuranceCompanies.Find(icid).ICName;
-                    dtos.Add(new InsDTO
-                    {
-                        id = record.Id,
-                        PESEL = record.PersonalData.PESEL,
-                        IC = ICName,
-                        PackageString = db.InsurancePackages.Where(x => x.PackageNo == record.InsurancePackageNo).First().PackageName,
-                        InsStartDate = record.InsuranceStartDate,
-                        InsEndDate = record.InsuranceEndDate
-                    });
+                    var PackageName = db.InsurancePackages.Where(x => x.PackageNo == record.InsurancePackageNo).First().PackageName;
+                    dtos.Add(services.GetInsDTO(record, ICName, PackageName));
                 }
                 string dtosjson = JsonConvert.SerializeObject(dtos, new JsonSerializerSettings()
                 {

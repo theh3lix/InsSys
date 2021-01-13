@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace InsuranceSystem.Controllers
+namespace InsSys.Controllers
 {
     public class HomeController : Controller
     {

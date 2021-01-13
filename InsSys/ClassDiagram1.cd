@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="InsSys.BundleConfig">
+    <Position X="14.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\BundleConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InsSys.FilterConfig">
+    <Position X="14.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\FilterConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InsSys.RouteConfig">
+    <Position X="12" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InsSys.MvcApplication">
+    <Position X="16" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InsSys.InsuranceSystemContext">
+    <Position X="16" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAQABgAAEEAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>InsuranceSystemContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InsSys.Controllers.AdminToolsController">
+    <Position X="1" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAgQEAAAAAAAA=</HashCode>
+      <FileName>Controllers\AdminToolsController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InsSys.Controllers.HomeController">
+    <Position X="3.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InsSys.Controllers.ManageInsurancesController">
+    <Position X="5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>DAAAAAAAQAAAAAAAABgEAAAAAAAAAQAAAAEAAIgQAAA=</HashCode>
+      <FileName>Controllers\ManageInsurancesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InsSys.Controllers.NewInsuranceController">
+    <Position X="7.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAEAAIAAAAA=</HashCode>
+      <FileName>Controllers\NewInsuranceController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InsSys.Controllers.SalesResultController">
+    <Position X="9.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAEAAIAAAIA=</HashCode>
+      <FileName>Controllers\SalesResultController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InsSys.Migrations.InitialMigration" BaseTypeListCollapsed="true">
+    <Position X="17.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202009121847101_InitialMigration.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="InsSys.Migrations.ForeignKeyInsurance" BaseTypeListCollapsed="true">
+    <Position X="17.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202011021242370_ForeignKeyInsurance.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.212" />
+  </Class>
+  <Class Name="InsSys.Migrations.IC_idInInsuranceRecord" BaseTypeListCollapsed="true">
+    <Position X="17.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAMAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAI=</HashCode>
+      <FileName>Migrations\202011021413059_IC_idInInsuranceRecord.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="InsSys.Migrations.Configuration">
+    <Position X="12" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Migrations\Configuration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InsSys.Migrations.CustomizedMigrationGenerator">
+    <Position X="14.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Migrations\CustomizedMigrationGenerator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InsSys.Models.AuthorizedUser">
+    <Position X="1" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Models\AuthorizedUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InsSys.Models.Insurance">
+    <Position X="4.5" Y="7.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAEAAACAMAAAAAABgAgAAAAAAAAAAAAMAAAABI=</HashCode>
+      <FileName>Models\Insurance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InsSys.Models.InsuranceCompany">
+    <Position X="6.75" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAA=</HashCode>
+      <FileName>Models\InsuranceCompany.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InsSys.Models.InsurancePackage">
+    <Position X="8.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIACAAAAAAAAQAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\InsurancePackage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InsSys.Models.NewInsuranceDTO">
+    <Position X="10.5" Y="7.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAEAAAiAIAIIAEABAAgABCQEAAAAAIAMAAAAAg=</HashCode>
+      <FileName>Models\NewInsuranceDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InsSys.Models.PersonalData">
+    <Position X="12.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAAAAgAAAIIAAAAAAAABAQEAAAAAIAAAAAAAg=</HashCode>
+      <FileName>Models\PersonalData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InsSys.Models.SalesNumber">
+    <Position X="14.25" Y="7.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\SalesNumber.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InsSys.Models.UserRole">
+    <Position X="15.75" Y="7.5" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\UserRole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InsSys.Models.InsDTO">
+    <Position X="2.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAEAAAAAAAAAAAAIAEAAAAAAAAAACAgA=</HashCode>
+      <FileName>Models\InsDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InsSys.Services.NewInsuranceServices">
+    <Position X="6" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAQIAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Services\NewInsuranceServices.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="InsSys.Services.InsuranceBuilder">
+    <Position X="2.25" Y="4.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAgAIAAAAAAAAAAAAEAAAAiIAAAAA=</HashCode>
+      <FileName>Misc\InsuranceBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="InsSys.Services.Interfaces.IInsuranceBuilder">
+    <Position X="0.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAEAAAAiAAAAAA=</HashCode>
+      <FileName>Misc\IInsuranceBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="InsSys.Services.Interfaces.INewInsuranceServices">
+    <Position X="4.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAQIAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Services\Interfaces\INewInsuranceServices.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

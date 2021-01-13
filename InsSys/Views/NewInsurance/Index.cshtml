@@ -1,7 +1,7 @@
-﻿@model InsuranceSystem.Models.NewInsuranceDTO
+﻿@model InsSys.Models.NewInsuranceDTO
 @{
     ViewBag.Title = "New Insurance";
-    List<InsuranceSystem.Models.InsuranceCompany> insurers = InsSys.Services.NewInsuranceServices.GetInsurers();
+    List<InsSys.Models.InsuranceCompany> insurers = new InsSys.Services.NewInsuranceServices().GetInsurers();
     List<SelectListItem> insurersList = new List<SelectListItem>();
     insurers.ForEach(x => insurersList.Add(new SelectListItem { Text = x.ICName, Value = x.Id.ToString() }));
     List<SelectListItem> variantsList = new List<SelectListItem> { new SelectListItem { Text = "Podstawowy", Value = "1" }, new SelectListItem { Text = "Rozszerzony", Value = "2" } };

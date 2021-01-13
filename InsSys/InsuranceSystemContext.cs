@@ -1,4 +1,4 @@
-﻿using InsuranceSystem.Models;
+﻿using InsSys.Models;
 using MySql.Data.EntityFramework;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;

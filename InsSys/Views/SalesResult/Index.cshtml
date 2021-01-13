@@ -1,0 +1,55 @@
+﻿@using InsSys.Services;
+@{
+    ViewBag.Title = "Home Page";
+    InsSys.Services.Interfaces.ISalesResultServices services = new SalesResultServices();
+    string monthString = services.GetMonthName(DateTime.Now.Month);
+    int salesYearBefore = services.GetSalesFromMonth(DateTime.Now.AddYears(-1));
+    int salesThisYear = services.PredictedSales(DateTime.Now);
+    int currentSalesThisYear = services.GetSalesFromMonth(DateTime.Now);
+}
+<style>
+    td {
+        text-align: left;
+    }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+<div id="salesPresentation" class="jumbotron" style="background-color: white; text-align: center;">
+    <h2>Insurance Management System</h2>
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <canvas id="SalesChart"></canvas>
+        </div>
+        <div class="col-xs-12 col-md-6">
+            <canvas id="SalesChart2"></canvas>
+        </div>
+    </div>
+    <p>&nbsp;</p>
+    <div class="row">
+        <div class="col-xs-8">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Month</th>
+                        <th>Sales numbers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@(DateTime.Now.Year-1) - @monthString</td>
+                        <td>@salesYearBefore</td>
+                    </tr>
+                    <tr>
+                        <td>@DateTime.Now.Year - @monthString</td>
+                        <td>(Current) @currentSalesThisYear</td>
+                    </tr>
+                    <tr style="font-weight: bold">
+                        <td>@DateTime.Now.Year - @monthString</td>
+                        <td>(Predicted) @salesThisYear</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+<script src="~/Scripts/viewScripts/salesResultController.js"></script>

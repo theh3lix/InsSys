@@ -1,4 +1,4 @@
-﻿@model  InsuranceSystem.Models.Insurance
+﻿@model  InsSys.Models.Insurance
 @{ 
     var db = new InsuranceSystemContext();
     string optionString = db.InsurancePackages.Where(x => x.PackageNo == Model.InsurancePackageNo).First().PackageName;
