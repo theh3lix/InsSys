@@ -57,6 +57,8 @@ var app = new Vue({
             console.log(res);
         },
         async deletePolicy(id) {
+            if (!confirm("Are you sure?"))
+                return;
             let res = await fetch('/ManageInsurances/DeletePolicy?id=' + id, { method: 'post' });
             let status = res.status;
             if (status == 200) {

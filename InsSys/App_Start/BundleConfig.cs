@@ -25,7 +25,7 @@ namespace InsSys
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/font-awesome.min.css",
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css",
+                      "~/Content/Site.css",
                       "~/admin-lte/css/AdminLTE.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/vuejs").Include(

@@ -19,6 +19,10 @@ namespace InsSys.Controllers
         [HttpPost]
         public ActionResult RegisterInsurance(NewInsuranceDTO newInsurance)
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Index");
+            }
             IInsuranceBuilder builder = new InsuranceBuilder();
             builder.BuildBasicInsuranceInfo(newInsurance);
             builder.BuildPersonalData(newInsurance);
@@ -30,8 +34,9 @@ namespace InsSys.Controllers
                 db.Entry(ins).State = System.Data.Entity.EntityState.Added;
                 db.SaveChanges();
             }
-            return RedirectToAction("Index", new {controller="ManageInsurances" });
+            return RedirectToAction("Index", new { controller="ManageInsurances" });
         }
+
     }
     
     

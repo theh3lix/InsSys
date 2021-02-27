@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InsSys.Models
 {
+    [Table("insurancepackage")]
     public class InsurancePackage
     {
         [Key]

@@ -13,6 +13,7 @@ namespace InsSys.Models
         public string LastName { get; set; }
         [Display(Name = "Date of Birth")]
         public DateTime DateOfBirth { get; set; }
+        [MaxLength(11)]
         public string PESEL { get; set; }
         [Display(Name = "City")]
         public string City { get; set; }

@@ -31,18 +31,18 @@ namespace InsSys.Controllers
         [HttpGet]
         public JsonResult GetInsurances()
         {
-            List<InsDTO> dtos = new List<InsDTO>();
+            var dtos = new List<InsDTO>();
             using(var db = new InsuranceSystemContext())
             {
-                var records = db.Insurances.Where(x=>x.Status != "DELETED").Include(x=>x.PersonalData).ToList();
+                var records = db.Insurances.Where(x=>x.Status != "DELETED").Include(x=>x.PersonalData).OrderByDescending(x=>x.InsuranceStartDate).ToHashSet();
                 foreach(var record in records)
                 {
                     var icid = db.InsurancePackages.Where(x => x.PackageNo == record.InsurancePackageNo).Select(x => x.Id_IC).First();
-                    var ICName = db.InsuranceCompanies.Find(icid).ICName;
-                    var PackageName = db.InsurancePackages.Where(x => x.PackageNo == record.InsurancePackageNo).First().PackageName;
-                    dtos.Add(services.GetInsDTO(record, ICName, PackageName));
+                    var icName = db.InsuranceCompanies.Find(icid)?.ICName;
+                    var packageName = db.InsurancePackages.Where(x => x.PackageNo == record.InsurancePackageNo)?.First().PackageName;
+                    dtos.Add(services.GetInsDTO(record, icName, packageName));
                 }
-                string dtosjson = JsonConvert.SerializeObject(dtos, new JsonSerializerSettings()
+                var dtosjson = JsonConvert.SerializeObject(dtos, new JsonSerializerSettings()
                 {
                     DateFormatString = "yyyy-MM-dd"
                 });
@@ -58,6 +58,8 @@ namespace InsSys.Controllers
             using(var db = new InsuranceSystemContext())
             {
                 var record = db.Insurances.Find(id);
+                if (record == null)
+                    return Json("404");
                 record.Status = "DELETED";
                 db.Entry(record).State = EntityState.Modified;
                 db.SaveChanges();
@@ -72,103 +74,11 @@ namespace InsSys.Controllers
             {
                 var record = db.Insurances.Where(x=>x.Id==id)
                     .Include(x=>x.IC)
-                    .Include(x=>x.PersonalData).First();
+                    .Include(x=>x.PersonalData).First(); //Getting full record details to generate policy
+                if (record == null)
+                    return Json("404");
                 return new ViewAsPdf("Templates/PolicyDocument", record);
             }
-        }
-
-
-
-        private string RenderRazorViewToString(string viewName, object model)
-        {
-            ViewData.Model = model;
-            using (var sw = new StringWriter())
-            {
-                var viewResult = ViewEngines.Engines.FindPartialView(ControllerContext,
-                                                                         viewName);
-                var viewContext = new ViewContext(ControllerContext, viewResult.View,
-                                             ViewData, TempData, sw);
-                viewResult.View.Render(viewContext, sw);
-                viewResult.ViewEngine.ReleaseView(ControllerContext, viewResult.View);
-                return sw.GetStringBuilder().ToString();
-            }
-        }
-        private string InlineCss(string html)
-        {
-            Match match = null;
-            var rx = new Regex(@"<link[^>]*href=""([^h][^t][^t][^p][^""]*.css)""[^>]*>", RegexOptions.IgnoreCase | RegexOptions.ECMAScript);
-            match = rx.Match(html);
-            while (match.Success)
-            {
-
-
-                var path = HttpContext.Server.MapPath(match.Groups[1].ToString());
-                var content = System.IO.File.ReadAllText(path);
-
-
-                html = html.Replace(match.ToString(), string.Format(@"<style>{0}</style>", content));
-                match = rx.Match(html);
-            }
-            return html;
-        }
-
-        private string InlineImg(string html)
-        {
-            Match match = null;
-            var rx = new Regex(@"<img[^>]*src=""([^d][^a][^t][^a][^:][^""]*)""[^>]*>", RegexOptions.IgnoreCase | RegexOptions.ECMAScript);
-            match = rx.Match(html);
-            while (match.Success)
-            {
-                var path = HttpContext.Server.MapPath(match.Groups[1].ToString());
-                var content = Convert.ToBase64String(System.IO.File.ReadAllBytes(path));
-                html = html.Replace(match.ToString(), string.Format(@"<img src=""data:image/gif;base64,{0}"" />", content));
-                match = rx.Match(html);
-            }
-            return html;
-        }
-
-        private string InlineJs(string html)
-        {
-            Match match = null;
-            var rx = new Regex(@"<script[^>]*src=""([^""]*.js)""[^>]*>", RegexOptions.IgnoreCase | RegexOptions.ECMAScript);
-            match = rx.Match(html);
-            while (match.Success)
-            {
-                if (match.Groups[1].ToString().ToLower().Contains("http")) return html;
-                var path = HttpContext.Server.MapPath(match.Groups[1].ToString());
-                var content = System.IO.File.ReadAllText(path);
-                html = html.Replace(match.ToString(), string.Format(@"<script>{0}</script>", content));
-                match = rx.Match(html);
-            }
-            return html;
-        }
-
-        static string RenderViewToString(ControllerContext context, string viewPath, object model = null, bool partial = false)
-        {
-            // first find the ViewEngine for this view
-            ViewEngineResult viewEngineResult = null;
-            if (partial)
-                viewEngineResult = ViewEngines.Engines.FindPartialView(context, viewPath);
-            else
-                viewEngineResult = ViewEngines.Engines.FindView(context, viewPath, null);
-
-            if (viewEngineResult == null)
-                throw new FileNotFoundException("View cannot be found.");
-
-            // get the view and attach the model to view data
-            var view = viewEngineResult.View;
-            context.Controller.ViewData.Model = model;
-
-            string result = null;
-
-            using (var sw = new StringWriter())
-            {
-                var ctx = new ViewContext(context, view, context.Controller.ViewData, context.Controller.TempData, sw);
-                view.Render(ctx, sw);
-                result = sw.ToString();
-            }
-
-            return result;
         }
 
     }

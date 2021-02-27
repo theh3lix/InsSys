@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace InsSys.Models
 {
+    [Table("insurance")]
     public class Insurance
     {
         [Key]

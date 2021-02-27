@@ -46,26 +46,26 @@ namespace InsSys.Services
 
         public double GetPredictedSale(DateTime date1)
         {
-            DateTime date2 = date1.AddYears(-1);
+            //input date is always first day of the month
+            DateTime date2 = date1.AddYears(-1); //first day of the month year ago
             using (var db = new InsuranceSystemContext())
             {
-                var listsYearBefore = GetInsurancesToPredict(date2);
-                var listsThisYear = GetInsurancesToPredict(date1);
+                var listsYearBefore = GetInsurancesToPredict(date2); //6 months' sales from this year
+                var listsThisYear = GetInsurancesToPredict(date1); //6 months' sales from year before
 
                 double[] divisions = new double[listsThisYear.Length];
                 for (int i = 0; i < listsYearBefore.Length; i++)
                 {
-                    if(listsYearBefore[i] == 0 || listsThisYear[i] == 0)
+                    if(listsYearBefore[i] == 0)
                     {
                         divisions[i] = 0;
                         continue;
                     }
-                    double result = listsYearBefore[i] / listsThisYear[i];
+                    double result = listsThisYear[i]/listsYearBefore[i];
                     divisions[i] = result;
                 }
-                double sum = divisions.Sum();
-                double average = sum / divisions.Length;
-                var dateTmp = date2.AddMonths(1).AddDays(-1);
+                double average = divisions.Sum() / divisions.Length;
+                var dateTmp = date2.AddMonths(1).AddDays(-1); //last day of the month year ago
                 var monthYearBefore = db.Insurances.Where(x => x.InsuranceStartDate.CompareTo(date2) > 0 && x.InsuranceStartDate.CompareTo(dateTmp) < 0).ToList().Count;
                 return average * monthYearBefore;
             }

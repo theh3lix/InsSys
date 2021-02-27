@@ -1,23 +1,39 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Admin Panel";
 }
 
-    <div class="row box box-primary" style="border-radius: 5px; width: 90%; margin-top: 20px; margin-left: auto; margin-right: auto; padding-bottom: 50px; padding-top: 30px;">
-        <h3 style="text-align: center; margin-bottom: 20px;">Administration Panel</h3>
-        <div class="col-md-4" style="text-align: center">
-            <p><a class="btn btn-primary" href="/NewInsurance">New Insurance &raquo;</a></p>
+    <div class="box box-primary" style="border-radius: 5px; width: 90%; margin-top: 20px; margin-left: auto; margin-right: auto; padding-bottom: 50px; padding-top: 70px;">
+        <div class="row">
+            <div class="col-md-2" style="text-align: center">
+                <p>&nbsp;</p>
+                <p><a class="btn btn-primary" onclick="ClearTheBase()">Clear the base &raquo;</a></p>
+                <p><a class="btn btn-primary" href="/AdminTools/DropTheBase">Drop the base &raquo;</a></p>
+            </div>
+            <div class="col-md-5" style="text-align: center">
+                <h3>Add new admin</h3>
+                <form method="post" action="AdminTools/AddAdmin">
+                    <input type="text" name="login" id="login" />
+                    <button style="margin-left: 20px" onclick="AddAdmin()" class="btn btn-primary">Add Admin</button>
+                </form>
+            </div>
+            <div class="col-md-5" style="text-align: center">
+                <h3>Import insurances from excel</h3>
+                <form method="post" action="AdminTools/ImportInsurances" enctype="multipart/form-data">
+                    <input type="file" name="fileIn" style="float: left; border: 1px solid grey; border-radius: 7px"/>
+                    <button type="submit"class="btn btn-primary">Import</button>
+                </form>
+            </div>
         </div>
-        <div class="col-md-4" style="text-align: center">
-            <p><a class="btn btn-primary" onclick="ClearTheBase()">Clear the base &raquo;</a></p>
-        </div>
-        <div class="col-md-4" style="text-align: center">
-            <p><a class="btn btn-primary" href="/AdminTools/DropTheBase">Drop the base &raquo;</a></p>
-        </div>
+        <p>&nbsp;</p>
+
     </div>
 
 
 <script>
     function ClearTheBase() {
+        return confirm("Are you sure?");
+    }
+    function AddAdmin() {
         return confirm("Are you sure?");
     }
 </script>

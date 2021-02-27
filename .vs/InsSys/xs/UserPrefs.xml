@@ -1,0 +1,45 @@
+﻿<Properties StartupConfiguration="{94A1433F-2738-46EE-813A-1B5DEF066855}|">
+  <MonoDevelop.Ide.ItemProperties.InsSys PreferredExecutionTarget="/usr/lib/firefox-esr/firefox-esr" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="InsSys/Views/AdminTools/Index.cshtml">
+    <Files>
+      <File FileName="InsSys/InsuranceSystemContext.cs" Line="28" Column="2" />
+      <File FileName="InsSys/Models/AuthorizedUser.cs" Line="9" Column="5" />
+      <File FileName="InsSys/Models/UserRole.cs" Line="8" Column="21" />
+      <File FileName="InsSys/Views/AdminTools/Index.cshtml" Line="37" Column="41" />
+      <File FileName="InsSys/Views/ManageInsurances/Index.cshtml" Line="10" Column="9" />
+      <File FileName="InsSys/Views/NewInsurance/Index.cshtml" Line="37" Column="101" />
+      <File FileName="InsSys/Controllers/AdminToolsController.cs" Line="100" Column="34" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="InsSys" expanded="True">
+            <Node name="InsSys" expanded="True">
+              <Node name="App_Start" expanded="True" />
+              <Node name="Content" expanded="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="AdminTools" expanded="True">
+                  <Node name="Index.cshtml" selected="True" />
+                </Node>
+                <Node name="ManageInsurances" expanded="True" />
+                <Node name="NewInsurance" expanded="True" />
+                <Node name="SalesResult" expanded="True" />
+                <Node name="Shared" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/home/miker/Dokumenty/PI/app2/InsSys/Controllers/AdminToolsController.cs" relfile="InsSys/Controllers/AdminToolsController.cs" line="109" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

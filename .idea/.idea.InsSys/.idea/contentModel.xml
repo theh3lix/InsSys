@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$PROJECT_DIR$/../.cache/JetBrains/Rider2020.2/extResources" t="IncludeRecursive" />
-    <e p="$PROJECT_DIR$/../.cache/JetBrains/Rider2020.2/resharper-host/local/Transient/Rider/v202/SolutionCaches/_InsSys.-867193740.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/.cache/JetBrains/Rider2020.3/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/.cache/JetBrains/Rider2020.3/resharper-host/local/Transient/Rider/v203/SolutionCaches/_InsSys.1045407870.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="InsSys" t="IncludeRecursive">
+        <e p="App_Browsers" t="Include">
+          <e p="qt.browser" t="Include" />
+        </e>
         <e p="App_Data" t="Include" />
         <e p="App_Start" t="Include">
           <e p="BundleConfig.cs" t="Include" />
           <e p="FilterConfig.cs" t="Include" />
           <e p="RouteConfig.cs" t="Include" />
         </e>
+        <e p="ClassDiagram1.cd" t="Include" />
         <e p="Content" t="Include">
           <e p="Site.css" t="Include" />
           <e p="bootstrap-theme.css" t="Include" />
@@ -39,6 +43,7 @@
           <e p="HomeController.cs" t="Include" />
           <e p="ManageInsurancesController.cs" t="Include" />
           <e p="NewInsuranceController.cs" t="Include" />
+          <e p="SalesResultController.cs" t="Include" />
         </e>
         <e p="Global.asax" t="Include" />
         <e p="Global.asax.cs" t="Include" />
@@ -60,6 +65,10 @@
           <e p="Configuration.cs" t="Include" />
           <e p="CustomizedMigrationGenerator.cs" t="Include" />
         </e>
+        <e p="Misc" t="Include">
+          <e p="IInsuranceBuilder.cs" t="Include" />
+          <e p="InsuranceBuilder.cs" t="Include" />
+        </e>
         <e p="Models" t="Include">
           <e p="AuthorizedUser.cs" t="Include" />
           <e p="InsDTO.cs" t="Include" />
@@ -68,10 +77,17 @@
           <e p="InsurancePackage.cs" t="Include" />
           <e p="NewInsuranceDTO.cs" t="Include" />
           <e p="PersonalData.cs" t="Include" />
+          <e p="SalesNumber.cs" t="Include" />
           <e p="UserRole.cs" t="Include" />
         </e>
         <e p="Properties" t="Include">
           <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Rotativa" t="Include">
+          <e p="help-wkhtmltoimage.txt" t="Include" />
+          <e p="help-wkhtmltopdf.txt" t="Include" />
+          <e p="wkhtmltoimage.exe" t="Include" />
+          <e p="wkhtmltopdf.exe" t="Include" />
         </e>
         <e p="Scripts" t="Include">
           <e p="_references.js" t="Include" />
@@ -96,14 +112,21 @@
           <e p="tether.min.js" t="Include" />
           <e p="viewScripts" t="Include">
             <e p="manageInsurancesController.js" t="Include" />
+            <e p="salesResultController.js" t="Include" />
           </e>
           <e p="vue-resource.min.js" t="Include" />
           <e p="vue-router.js" t="Include" />
           <e p="vue.min.js" t="Include" />
         </e>
         <e p="Services" t="Include">
+          <e p="Interfaces" t="Include">
+            <e p="IManageInsurancesServices.cs" t="Include" />
+            <e p="INewInsuranceServices.cs" t="Include" />
+            <e p="ISalesResultServices.cs" t="Include" />
+          </e>
           <e p="ManageInsurancesServices.cs" t="Include" />
           <e p="NewInsuranceServices.cs" t="Include" />
+          <e p="SalesResultServices.cs" t="Include" />
         </e>
         <e p="Views" t="Include">
           <e p="AdminTools" t="Include">
@@ -122,6 +145,9 @@
             </e>
           </e>
           <e p="NewInsurance" t="Include">
+            <e p="Index.cshtml" t="Include" />
+          </e>
+          <e p="SalesResult" t="Include">
             <e p="Index.cshtml" t="Include" />
           </e>
           <e p="Shared" t="Include">
